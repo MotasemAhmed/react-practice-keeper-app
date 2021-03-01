@@ -1,25 +1,18 @@
-import { EmojiCard } from "../components/EmojiCard";
-import { emojipedia } from "../emojipedia";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
+import { Note } from "./Note";
+import { notes } from "../notes";
 
-console.log(emojipedia);
-
-function createEmojiCard(emojiTerm) {
-  return (
-    <EmojiCard
-      key={emojiTerm.id}
-      emoji={emojiTerm.emoji}
-      name={emojiTerm.name}
-      meaning={emojiTerm.meaning}
-    />
-  );
-}
 function App() {
   return (
     <div>
-      <h1>
-        <span>emojipedia</span>
-      </h1>
-      <dl className="dictionary">{emojipedia.map(createEmojiCard)}</dl>
+      <Header />
+      {notes.map((note) => {
+        return (
+          <Note key={note.key} title={note.title} content={note.content} />
+        );
+      })}
+      <Footer />
     </div>
   );
 }
