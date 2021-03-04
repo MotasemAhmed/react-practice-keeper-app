@@ -1,44 +1,31 @@
-import React from "react";
-import { cars } from "../cars";
-
-// function useCar(car) {
-//   return [
-//     car.
-//   ]
-// }
-
-const [honda, tesla] = cars;
-const {
-  speedStats: { topSpeed: teslaTopSpeed },
-} = tesla;
-const {
-  speedStats: { topSpeed: hondaTopSpeed },
-} = honda;
-const {
-  coloursByPopularity: [teslaTopColour],
-} = tesla;
-const {
-  coloursByPopularity: [hondaTopColour],
-} = honda;
+import React, { useState } from "react";
 
 function App() {
+  const [headingText, setHeadingText] = useState("Hello");
+  const [btnBG, setBtnBG] = useState("white");
+
+  function handleClick() {
+    setHeadingText("Bye");
+  }
+  function handleMouseOver() {
+    setBtnBG("black");
+  }
+  function handleMouseOut() {
+    setBtnBG("white");
+  }
   return (
-    <table>
-      <tr>
-        <th>Brand</th>
-        <th>Top Speed</th>
-      </tr>
-      <tr>
-        <td>{tesla.model}</td>
-        <td>{teslaTopSpeed}</td>
-        <td>{teslaTopColour}</td>
-      </tr>
-      <tr>
-        <td>{honda.model}</td>
-        <td>{hondaTopSpeed}</td>
-        <td>{hondaTopColour}</td>
-      </tr>
-    </table>
+    <div className="container">
+      <h1>{headingText}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button
+        onClick={handleClick}
+        style={{ backgroundColor: btnBG }}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        Submit
+      </button>
+    </div>
   );
 }
 
