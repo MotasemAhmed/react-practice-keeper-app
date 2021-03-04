@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 
 function App() {
-  const [state, setstate] = useState(0);
+  let now = new Date().toLocaleTimeString();
 
-  function increase() {
-    setstate(state + 1);
+  const [state, setstate] = useState(now);
+
+  function newTime() {
+    const currentTime = new Date().toLocaleTimeString();
+    setstate(currentTime);
   }
 
-  function decrease() {
-    setstate(state - 1);
-  }
   return (
     <div className="container">
       <h1>{state}</h1>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
+      <button onClick={newTime}>Get Time</button>
     </div>
   );
 }
