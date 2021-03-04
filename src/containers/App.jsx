@@ -1,22 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
+import { cars } from "../cars";
+
+// function useCar(car) {
+//   return [
+//     car.
+//   ]
+// }
+
+const [honda, tesla] = cars;
+const {
+  speedStats: { topSpeed: teslaTopSpeed },
+} = tesla;
+const {
+  speedStats: { topSpeed: hondaTopSpeed },
+} = honda;
+const {
+  coloursByPopularity: [teslaTopColour],
+} = tesla;
+const {
+  coloursByPopularity: [hondaTopColour],
+} = honda;
 
 function App() {
-
-  setInterval(newTime,1000)
-  let now = new Date().toLocaleTimeString();
-
-  const [state, setstate] = useState(now);
-
-  function newTime() {
-    const currentTime = new Date().toLocaleTimeString();
-    setstate(currentTime);
-  }
-
   return (
-    <div className="container">
-      <h1>{state}</h1>
-      <button onClick={newTime}>Get Time</button>
-    </div>
+    <table>
+      <tr>
+        <th>Brand</th>
+        <th>Top Speed</th>
+      </tr>
+      <tr>
+        <td>{tesla.model}</td>
+        <td>{teslaTopSpeed}</td>
+        <td>{teslaTopColour}</td>
+      </tr>
+      <tr>
+        <td>{honda.model}</td>
+        <td>{hondaTopSpeed}</td>
+        <td>{hondaTopColour}</td>
+      </tr>
+    </table>
   );
 }
 
