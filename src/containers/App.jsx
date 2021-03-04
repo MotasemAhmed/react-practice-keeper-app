@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
 function App() {
-  const [headingText, setHeadingText] = useState("Hello");
+  const [name, setName] = useState("");
+  const [hName, sethName] = useState("");
   const [btnBG, setBtnBG] = useState("white");
 
   function handleClick() {
-    setHeadingText("Bye");
+    sethName(name);
   }
   function handleMouseOver() {
     setBtnBG("black");
@@ -13,10 +14,19 @@ function App() {
   function handleMouseOut() {
     setBtnBG("white");
   }
+  function handleChange(e) {
+    setName(e.target.value);
+  }
+
   return (
     <div className="container">
-      <h1>{headingText}</h1>
-      <input type="text" placeholder="What's your name?" />
+      <h1>Hello, {hName}</h1>
+      <input
+        onChange={handleChange}
+        value={name}
+        type="text"
+        placeholder="What's your name?"
+      />
       <button
         onClick={handleClick}
         style={{ backgroundColor: btnBG }}
