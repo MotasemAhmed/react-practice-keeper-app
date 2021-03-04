@@ -5,8 +5,9 @@ function App() {
   const [hName, sethName] = useState("");
   const [btnBG, setBtnBG] = useState("white");
 
-  function handleClick() {
+  function handleClick(e) {
     sethName(name);
+    e.preventDefault();
   }
   function handleMouseOver() {
     setBtnBG("black");
@@ -20,21 +21,19 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Hello, {hName}</h1>
-      <input
-        onChange={handleChange}
-        value={name}
-        type="text"
-        placeholder="What's your name?"
-      />
-      <button
-        onClick={handleClick}
-        style={{ backgroundColor: btnBG }}
-        onMouseOver={handleMouseOver}
-        onMouseOut={handleMouseOut}
-      >
-        Submit
-      </button>
+      <form onChange={handleChange}>
+        <h1>Hello, {hName}</h1>
+        <input value={name} type="text" placeholder="What's your name?" />
+        <button
+          type="submit"
+          onClick={handleClick}
+          style={{ backgroundColor: btnBG }}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
